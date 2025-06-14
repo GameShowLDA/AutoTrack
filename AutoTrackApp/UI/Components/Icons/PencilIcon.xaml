@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="AutoTrackApp.UI.Components.Icons.PencilIcon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="root"
+             Width="{Binding Size, RelativeSource={RelativeSource Self}}"
+             Height="{Binding Size, RelativeSource={RelativeSource Self}}">
+    <Viewbox Stretch="Uniform">
+        <Canvas Width="24" Height="24">
+            <Path
+                Data="M3,17.25V21h3.75l11.06-11.06-3.75-3.75L3,17.25z M20.71,7.04c0.39-0.39,0.39-1.02,0-1.41l-2.34-2.34a1,1,0,0,0-1.41,0l-1.83,1.83,3.75,3.75,1.83-1.83z">
+                <Path.Fill>
+                    <MultiBinding Converter="{StaticResource IsMouseOverToBrushConverter}">
+                        <Binding ElementName="root" Path="IsMouseOver"/>
+                        <Binding ElementName="root" Path="IconFill"/>
+                        <Binding ElementName="root" Path="HoverFill"/>
+                    </MultiBinding>
+                </Path.Fill>
+            </Path>
+        </Canvas>
+    </Viewbox>
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="Cursor" Value="Arrow"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+</UserControl>

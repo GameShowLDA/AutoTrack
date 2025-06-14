@@ -9,6 +9,6 @@
         <conv:SelectedTabBackgroundConverter x:Key="SelectedTabBackgroundConverter"/>
         <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
         <conv:BoolToBrushConverter x:Key="BoolToBrushConverter" TrueBrush="#fff1f1" FalseBrush="Transparent"/>
-
+        <conv:IsMouseOverToBrushConverter x:Key="IsMouseOverToBrushConverter"/>
     </Application.Resources>
 </Application>
