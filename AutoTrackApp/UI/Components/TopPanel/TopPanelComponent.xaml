@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="AutoTrackApp.UI.Components.TopPanel.TopPanelComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutoTrackApp.UI.Components.TopPanel"
+             mc:Ignorable="d" 
+             Height="30" d:DesignWidth="800" Background="#f0f0f5">
+    <Grid HorizontalAlignment="Left" Margin="10,0" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <local:RoundButton x:Name="CloseButton"
+                            Grid.Column="0" 
+                            SizeButton="15" 
+                            Background="#ff5f57" 
+                            Margin="0,0,10,0" 
+                            EllipsePreviewMouseDown="CloseButton_EllipsePreviewMouseDown"
+                            />
+
+        <local:RoundButton x:Name="MinimizeButton" 
+                             Grid.Column="1" 
+                             SizeButton="15" 
+                             Background="#ffbd2e" 
+                             Margin="0,0,10,0" 
+                             EllipsePreviewMouseDown="MinimizeButton_EllipsePreviewMouseDown"
+                             />
+
+        <local:RoundButton x:Name="MaximizeButton" 
+                             Grid.Column="2" 
+                             SizeButton="15" 
+                             Background="#28c840" 
+                             EllipsePreviewMouseDown="MaximizeButton_EllipsePreviewMouseDown"
+                             />
+
+    </Grid>
+</UserControl>

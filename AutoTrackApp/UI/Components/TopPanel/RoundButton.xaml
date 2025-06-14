@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="AutoTrackApp.UI.Components.TopPanel.RoundButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="root"
+             Width="{Binding SizeButton, RelativeSource={RelativeSource Self}}"
+             Height="{Binding SizeButton, RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <Grid>
+            <Ellipse x:Name="ellipse"
+             Fill="{Binding Background, ElementName=root}"
+             Stroke="{Binding Background, ElementName=root}"
+             StrokeThickness="1"
+             SnapsToDevicePixels="False"
+             RenderOptions.EdgeMode="Unspecified"
+             RenderOptions.BitmapScalingMode="HighQuality"
+             Width="{Binding SizeButton, ElementName=root}"
+             Height="{Binding SizeButton, ElementName=root}"
+             Cursor="Hand"
+             PreviewMouseDown="Ellipse_PreviewMouseDown"/>
+        </Grid>
+    </Grid>
+</UserControl>
