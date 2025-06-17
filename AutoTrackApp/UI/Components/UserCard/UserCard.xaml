@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              MinWidth="500" MinHeight="120"
              Background="Transparent">
-        <Border Background="White"
+    <Border Background="White"
             CornerRadius="16"
             Padding="16"
             Margin="0,8,0,12"
@@ -41,10 +41,32 @@
                            Foreground="White"/>
             </Grid>
             <!-- Информация о пользователе -->
-            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+            <StackPanel Grid.Column="2" VerticalAlignment="Center"  x:Name="UserCardRoot">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding FullName}" FontWeight="Bold" FontSize="28" Margin="0,0,4,0"/>
-                    <Border Width="28" Height="28" Background="Transparent" CornerRadius="6" Cursor="Hand"
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Text="{Binding LastName}" 
+                                 IsReadOnly="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanConverter}}" 
+                                 Style="{StaticResource EditableTextBoxStyle}"
+                                 FontWeight="Bold" FontSize="28" Margin="0,0,2,2"
+                                 x:Name="LastNameTextBox"/>
+                        <TextBox Text="{Binding FirstName}" 
+                                 IsReadOnly="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanConverter}}" 
+                                 Style="{StaticResource EditableTextBoxStyle}"
+                                 Grid.Column="1" FontWeight="Bold" FontSize="28" Margin="0,0,2,2"
+                                 x:Name="FirstNameTextBox"/>
+                        <TextBox Text="{Binding Patronymic}" 
+                                 IsReadOnly="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanConverter}}" 
+                                 Style="{StaticResource EditableTextBoxStyle}"
+                                 Grid.Column="2" FontWeight="Bold" FontSize="28" Margin="0,0,2,2"
+                                 x:Name="PatronymicTextBox"/>
+                    </Grid>
+
+                    <Border Background="Transparent" CornerRadius="6" Cursor="Hand"
                             VerticalAlignment="Center" Margin="0,0,0,0">
                         <Border.Style>
                             <Style TargetType="Border">
@@ -58,12 +80,54 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <icons:PencilIcon Size="20" IconFill="#3B82F6"/>
+                        <StackPanel Orientation="Horizontal">
+                            <icons:PencilIcon x:Name="Edit" Size="20" IconFill="#3B82F6" MouseLeftButtonDown="EditIcon_MouseDown" Visibility="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanConverter}}" />
+                            <icons:CheckIcon x:Name="SaveButton" Size="20" MouseLeftButtonDown="SaveButton_PreviewMouseDown" Visibility="Collapsed"/>
+                            <icons:CloseIcon x:Name="CancelButton" Size="20" MouseLeftButtonDown="CancelButton_PreviewMouseDown" Visibility="Collapsed" Margin="4,0,0,0"/>
+                        </StackPanel>
                     </Border>
                 </StackPanel>
-                <TextBlock Text="{Binding DateOfBirth, StringFormat='день рождения: {0:dd.MM.yyyy}'}" FontSize="15" Foreground="#666" Margin="0,0,0,2"/>
-                <TextBlock Text="{Binding Email, StringFormat='эл. почта: {0}'}" FontSize="15" Foreground="#666" Margin="0,0,0,2"/>
-                <TextBlock Text="{Binding Phone, StringFormat='моб. телефон: {0}'}" FontSize="15" Foreground="#666"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="день рождения:" FontSize="15" Foreground="#666" Margin="0,0,0,2"/>
+                    <TextBox Grid.Column="1" Text="{Binding DateOfBirth, StringFormat=' {0:dd.MM.yyyy}'}" 
+                             IsReadOnly="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanConverter}}" 
+                             Style="{StaticResource EditableTextBoxStyle}"
+                             FontSize="15" Foreground="#666"
+                                 x:Name="DateOfBirthTextBox"/>
+
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="эл. почта:" FontSize="15" Foreground="#666" Margin="0,0,0,2"/>
+                    <TextBox Grid.Column="1" Text="{Binding Email, StringFormat=' {0}'}" 
+                             IsReadOnly="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanConverter}}" 
+                             Style="{StaticResource EditableTextBoxStyle}"
+                             FontSize="15" Foreground="#666"
+                             x:Name="EmailTextBox"/>
+
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="моб. телефон:" FontSize="15" Foreground="#666"/>
+                    <TextBox Grid.Column="1" Text="{Binding Phone, StringFormat=' {0}'}" 
+                             IsReadOnly="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanConverter}}" 
+                             Style="{StaticResource EditableTextBoxStyle}"
+                             FontSize="15" Foreground="#666"
+                             x:Name="PhoneTextBox"/>
+                </Grid>
             </StackPanel>
         </Grid>
     </Border>

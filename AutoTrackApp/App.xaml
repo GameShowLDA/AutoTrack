@@ -10,5 +10,18 @@
         <conv:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
         <conv:BoolToBrushConverter x:Key="BoolToBrushConverter" TrueBrush="#fff1f1" FalseBrush="Transparent"/>
         <conv:IsMouseOverToBrushConverter x:Key="IsMouseOverToBrushConverter"/>
+        <conv:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+
+        <Style x:Key="EditableTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#3B82F6"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsEditMode, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="True">
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
     </Application.Resources>
 </Application>

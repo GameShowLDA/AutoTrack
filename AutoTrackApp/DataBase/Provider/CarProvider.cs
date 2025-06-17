@@ -1,0 +1,14 @@
+﻿using AutoTrackApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AutoTrackApp.DataBase.Provider
+{
+  public class CarProvider : CrudProviderBase<CarModel> 
+  { 
+  
+  }
+}

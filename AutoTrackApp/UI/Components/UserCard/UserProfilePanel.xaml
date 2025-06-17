@@ -9,7 +9,7 @@
              MinWidth="600" Background="#f5f5fa">
     <StackPanel Margin="16">
         <!-- Карточка пользователя -->
-        <local:UserCard DataContext="{Binding}" />
+        <local:UserCard DataContext="{Binding}"  x:Name="UserCardPanel"  />
 
         <!-- Здесь будут секции для машин и работ -->
         <local:UserCarsPanel x:Name="UserCarsPanel" />

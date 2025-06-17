@@ -42,5 +42,13 @@ namespace AutoTrackApp.UI.Components.UserCard
         }
       };
     }
+
+    public void CancelEditIfNeeded()
+    {
+      if (UserCardPanel.IsEditMode)
+      {
+        UserCardPanel.CancelEdit();
+      }
+    }
   }
 }
